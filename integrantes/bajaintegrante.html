@@ -1,0 +1,85 @@
+<!-- BEGIN: main -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>{titulo}</title>
+<meta http-equiv="Content-Language" content="en" />
+<meta name="GENERATOR" content="Co-Comp Ltd" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="../css/estilos.css" type="text/css" />
+<link rel="stylesheet" href="../css/screensmall.css" type="text/css" />
+<link rel="stylesheet" href="../css/estilosValidador.css" type="text/css" />
+<link rel="stylesheet" href="../js/LightForm/css/main.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../js/funciones.js"></script>
+<script type="text/javascript" src="../js/mootools.js"></script>
+<script type="text/javascript" src="../js/moocheck.js"></script>
+<script type="text/javascript" src="../js/fValidator.js"></script>
+<script type="text/javascript">
+
+window.addEvent("domready", function() {
+	var exValidatorA = new fValidator("bajaintegrante");
+});
+
+
+
+</script>
+</head>
+<body class="bodyPlantilla" {msj}>
+      <div class="bar_in"></div>
+			<!-- BEGIN:menu -->
+				{menu}
+			<!-- END:menu -->
+			<div id="overlay" style="visibility:hidden"></div>
+<div id="lightbox" >
+   <div class="roundedcornr_top"><div></div></div>
+  <div class="roundedcornr_content">
+	  <h3><span>Mensajes del sistema</span></h3>
+    <p id="mensajeErrorText"><!-- BEGIN: msj -->
+					 {msj}
+				<!-- END: msj --></p>
+<div class="btn_cerrar">    <label class="boton"><input type="submit" value="Cerrar" onclick="mensajeError(null);void(0);" />
+</label> </div>
+  </div>
+	  <div class="roundedcornr_bottom"><div></div></div>
+</div>
+			<div class="divaltausuario">
+ 				<div align="justify"><p class="titulo_modificar_usuario">{titulo}</p></div>
+ 				
+				<form name='bajaintegrante' id='bajaintegrante' class="fValidator-form" action='bajaintegrante-action.php' method='post'>
+		<input type="hidden" name="cd_docente" id="cd_docente" value="{cd_docente}"/>
+		<input type="hidden" name="cd_proyecto" id="cd_proyecto" value="{cd_proyecto}"/>
+					<label>C&oacute;digo :</label>
+					 {ds_codigo}
+					<label>Proyecto :</label> {ds_titulo}
+					<label>Integrante:</label> {ds_integrante}
+					<label>Fecha de Baja: (*)</label><input type='text' name='dt_baja' id='dt_baja' size='10' class="fValidate['required','date']" value="{dt_baja}"/>
+					<label><strong>IMPORTANTE: con respecto a las solicitudes de bajas se debe tener en cuenta que, a los efectos del cobro de incentivos, el Ministerio no permite que los docentes investigadores cambien de proyecto. Cada docente investigador es asociado a un proyecto hasta su finalizaci&oacute;n y no puede solicitar incentivos por otro proyecto. </label>
+					<label><strong>Explicar las consecuencias de la baja en el desenvolvimiento del  proyecto</strong> (*): </label>
+					<label>
+					  <textarea id="ds_consecuencias" name="ds_consecuencias" cols="50" rows="10" class="fValidate['required']">{ds_consecuencias}</textarea> 
+					  <label><strong>Explicar los motivos de la baja</strong> (*): </label>
+					<label>
+					  <textarea id="ds_motivos" name="ds_motivos" cols="50" rows="10" class="fValidate['required']">{ds_motivos}</textarea> 
+					 <label>Considerando la baja, indicar si el el proyecto cumple con los siguientes requisitos</label>
+					<label><strong>M&iacute;nimo {mincategorizados} integrantes categorizados con lugar de trabajo en la U.N.L.P.</strong>: (*)</label>
+					SI
+    <input name="bl_mincategoriados" id="bl_mincategoriados" type="radio" value="1" checked="checked"/>
+ No
+ <input name="bl_mincategoriados" type="radio" value="0" />
+					<!--<label>La suma de dedicaciones horarias de los miembros del proyecto es igual o  mayor a {minhstotales} hs. semanales: (*)</label>
+					SI
+    <input name="bl_minhoras" id="bl_minhoras" type="radio" value="1" checked="checked"/>
+ No
+ <input name="bl_minhoras" type="radio" value="0" />  -->
+ 					
+					<p style="text-align:center">
+					<input type='submit' name='submit' class="buttonSubmit" value='Aceptar'/>
+					<input type='reset' name='cancelar' class="buttonSubmit" value='Cancelar' onclick="javascript:history.back(-1);"/>
+					</p>
+                                        <label>(*) Campos Requeridos</label>
+				</form>	
+				
+			</div>
+</body>
+</html>
+<!-- END: main -->

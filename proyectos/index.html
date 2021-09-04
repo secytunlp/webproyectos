@@ -1,0 +1,134 @@
+<!-- BEGIN: main -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>{titulo}</title>
+<meta http-equiv="Content-Language" content="en" />
+<meta name="GENERATOR" content="Co-Comp Ltd" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="../css/estilos.css" type="text/css" />
+<link rel="stylesheet" href="../css/screensmall.css" type="text/css" />
+<link rel="stylesheet" href="../css/calendar.css" type="text/css" />
+<link rel="stylesheet" href="../css/estilosValidador.css" type="text/css" />
+<link rel="stylesheet" href="../js/LightForm/css/main.css" type="text/css" media="screen" />
+<script type="text/javascript" src="../js/funciones.js"></script>
+<script type="text/javascript" src="../js/mootools.js"></script>
+<script type="text/javascript" src="../js/moocheck.js"></script>
+<script type="text/javascript" src="../js/calendar.js"></script>
+<script type="text/javascript" src="../js/fValidator.js"></script>
+<script type="text/javascript">
+function listartodos(){
+	var filtro = document.getElementById('filtro');
+	var filtroDir = document.getElementById('filtroDir');
+	var filtroFacultad = document.getElementById('filtroFacultad');
+	filtro.value='';
+	filtroDir.value='';
+	filtroFacultad.value='';
+}
+
+</script>
+
+<script type="text/javascript">
+    function show_log(){
+        document.getElementById("tablaCentro").style.display = 'block';
+    }
+</script>
+
+<script type="text/javascript">
+    function hide_log(){
+        document.getElementById("tablaCentro").style.display = 'none';
+    }
+
+</script>
+
+</head>
+<body class="" {msj}>
+        <div class="bar_in"></div>
+		<!-- BEGIN:menu -->
+		{menu}
+		<!-- END:menu -->
+		<div id="overlay" style="visibility:hidden"></div>
+			<div id="lightbox" >
+   <div class="roundedcornr_top"><div></div></div>
+  <div class="roundedcornr_content">
+	  <h3><span>Mensajes del sistema</span></h3>
+    <p id="mensajeErrorText"><!-- BEGIN: msj -->
+					 {msj}
+				<!-- END: msj --></p>
+<div class="btn_cerrar">    <label class="boton"><input type="submit" value="Cerrar" onclick="mensajeError(null);void(0);" />
+</label> </div>
+  </div>
+	  <div class="roundedcornr_bottom"><div></div></div>
+</div>
+<!--	<div class="tablaPaginador">
+ BEGIN: resultado --> {resultado} <!-- END: resultado 
+</div>-->
+<div id="tablaCentro" class="tablaCentro" style="display: none;">
+<!--div align="left">-->
+	<form name="buscar" id="buscar" class="search" action="index.php" method="GET" >
+		<input type="hidden" name="validar" id="validar" value="true" />
+		<input type="hidden" name="pendiente" id="pendiente" value="{pendiente}" />
+                      <label align="">C&oacute;digo:</label>
+                      <input type="text" name="filtro" id="filtro" size="10" value="{filtro}"/>
+                      <label align="">Director:</label>
+                      <input type="text" name="filtroDir" id="filtroDir" size="30" value="{filtroDir}"/>
+                      <label align="">Unidad Acad&eacute;mica:</label>
+                      <select name="filtroFacultad" id="filtroFacultad" style="width: 235px">
+                            <option value="">- Seleccione Uno -</option>
+                            <!-- BEGIN:facultad -->
+                                    <option value={DATA.cd_facultad}>{DATA.ds_facultad}</option>
+                            <!-- END:facultad -->
+                      </select>
+		<div class="">
+		<p>
+		<input type="submit" name="buscar" class="buttonSubmit" id="buscar" value="Buscar" onClick="show_log()" />
+		<input type="submit" name="listar" class="buttonSubmit" id="listar" onClick="listartodos(); hide_log()" value="Listar Todos" />
+                <input type="reset" name="cancelar" class="buttonSubmit" onClick="hide_log()" value="Cancelar" />
+		</p>
+		</div>
+	</form>
+</div>
+
+<table class="tablaListado">
+	<tr>
+		<th><a
+			href="index.php{query_string}campo=ds_codigo&orden={orden}" class="unnamed1">C&oacute;digo&nbsp;{imgCOD}</a></th>
+		<th><a
+			href="index.php{query_string}campo=ds_titulo&orden={orden}" class="unnamed1">T&iacute;tulo&nbsp;{imgTIT}</a></th>
+		<th><a
+			href="index.php{query_string}campo=ds_director&orden={orden}" class="unnamed1">Director&nbsp;{imgDIR}</a></th>
+		<th><a
+			href="index.php{query_string}campo=dt_ini&orden={orden}" class="unnamed1">Inicio&nbsp;{imgINI}</a></th>
+		<th><a
+			href="index.php{query_string}campo=dt_fin&orden={orden}" class="unnamed1">Fin&nbsp;{imgFIN}</a></th>
+		<th><a
+			href="index.php{query_string}campo=ds_facultad&orden={orden}" class="unnamed1">Facultad&nbsp;{imgFAC}</a></th>
+		<th>Estado</th>	
+		<th>Acciones</th>
+	</tr>
+	<!-- BEGIN: row -->
+	<tr>
+		<td>{DATOS.ds_codigo}</td>
+		<td>{DATOS.ds_titulo}</td>
+		<td>{DATOS.ds_director}</td>
+		<td>{DATOS.dt_ini}</td>
+		<td>{DATOS.dt_fin}</td>
+		<td>{DATOS.ds_facultad}</td>
+		<td>{DATOS.ds_estado}</td>
+		<td><a href="verproyecto.php?id={DATOS.cd_proyecto}"><img class="hrefImg" src="../img/search.jpg"
+			title="Detalle de proyecto" /></a>	</td>
+	</tr>
+	<!-- END: row -->
+</table><br>
+<br>
+
+<div id="paginas">
+	<!-- BEGIN: PAG --> {PAG} <!-- END: PAG -->
+</div>
+</div>
+
+
+
+</body>
+</html>
+<!-- END: main -->
